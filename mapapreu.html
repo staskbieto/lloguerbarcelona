@@ -31,231 +31,247 @@
 
 
 <body class="">
-    <div class="container">
-        <div class="jp-Cell-inputWrapper">
-            <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-                <div style="width: 100%; clear: both;">
-                    <div style="float: left; width: 50%;">
-                        <img src="http://www.uoc.edu/portal/_resources/common/imatges/marca_UOC/UOC_Masterbrand.jpg" ,
-                             align="left">
-                    </div>
-                    <div style="float: right; width: 50%;">
-                        <p style="margin: 0; padding-top: 22px; text-align:right;">M2.959 - Visualització de Dades ·
-                            PAC2</p>
-                        <p style="margin: 0; text-align:right;">2020-1 · Màster universitari en Ciència de dades (Data
-                            science)</p>
-                        <p style="margin: 0; text-align:right; padding-button: 100px;">Estudis d'Informàtica, Multimèdia i
-                            Telecomunicació</p>
-                    </div>
+<div class="container">
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+            <div style="width: 100%; clear: both;">
+                <div style="float: left; width: 50%;">
+                    <img src="http://www.uoc.edu/portal/_resources/common/imatges/marca_UOC/UOC_Masterbrand.jpg" ,
+                         align="left">
                 </div>
-                <div style="width:100%;">&nbsp;</div>
-                <h1 id="PAC-4:-Creaci&#243;-de-la-visualitzaci&#243;-i-lliurament-del-projecte">PAC 4: Creaci&#243; de la
-                    visualitzaci&#243; i lliurament del projecte<a class="anchor-link"
-                                                                   href="#PAC-4:-Creaci&#243;-de-la-visualitzaci&#243;-i-lliurament-del-projecte">&#182;</a>
-                </h1>
+                <div style="float: right; width: 50%;">
+                    <p style="margin: 0; padding-top: 22px; text-align:right;">M2.959 - Visualització de Dades ·
+                        PAC2</p>
+                    <p style="margin: 0; text-align:right;">2020-1 · Màster universitari en Ciència de dades (Data
+                        science)</p>
+                    <p style="margin: 0; text-align:right; padding-button: 100px;">Estudis d'Informàtica, Multimèdia i
+                        Telecomunicació</p>
+                </div>
+            </div>
+            <div style="width:100%;">&nbsp;</div>
+            <h1 id="PAC-4:-Creaci&#243;-de-la-visualitzaci&#243;-i-lliurament-del-projecte">PAC 4: Creaci&#243; de la
+                visualitzaci&#243; i lliurament del projecte<a class="anchor-link"
+                                                               href="#PAC-4:-Creaci&#243;-de-la-visualitzaci&#243;-i-lliurament-del-projecte">&#182;</a>
+            </h1>
+        </div>
+    </div>
+
+
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" href="#pills-home" role="tab"
+               aria-controls="pills-home" aria-selected="true">Preu</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="pills-descompte-tab" data-bs-toggle="pill" href="#pills-descompte" role="tab"
+               aria-controls="pills-descompte" aria-selected="false">Descomptes</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" href="#pills-profile" role="tab"
+               aria-controls="pills-profile" aria-selected="false">Diferència respecte a la mitjana</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="pills-inmobiliaries-tab" data-bs-toggle="pill" href="#pills-inmobiliaries"
+               role="tab" aria-controls="pills-inmobiliaries" aria-selected="false">Immobiliàries</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="pills-dades-tab" data-bs-toggle="pill" href="#pills-dades" role="tab"
+               aria-controls="pills-dades" aria-selected="false">Dades</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="pills-mes-tab" data-bs-toggle="pill" href="#pills-mes" role="tab"
+               aria-controls="pills-mes" aria-selected="false">Més</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div class="card w-100">
+                <div class="card-header">
+                    Preu dels habitatges
+                </div>
+                <div class="card-body">
+                    <div>
+                        <p class="pb-3">
+                            Aquest mapa ens permet explorar el preu dels habitatges en lloguer al web de Fotocasa.es. Es
+                            tracta d'un mapa de calor on hi podem veure els diferents barris de la ciutat de Barcelona,
+                            segon el preu pel metre quadrat o el preu absolut. Si fem clic en un dels barris, farem zoom
+                            i
+                            veurem cada un dels pisos del portal, amb la seva informació associada i colorejats amb la
+                            mateixa escala del mapa. En color negre veiem els barris on no hi ha cap habitatge en
+                            lloguer
+                            i, per tant, no hi tenim dades. 
+                        </p>
+                        <p class="pb-3">
+                            Observant les dades del preu per metre quadrat s'observa que hi
+                            ha zones sensiblement més cares, com la zona de Diagonal Mar, la Barceloneta, la zona centre
+                            o
+                            la zona alta sud-oest. Si canviem la visualització a preu absolut, hi veiem clarament que
+                            aquesta ultima zona es dispara. Llavors, trobem els pisos més barats en les zones més
+                            allunyades
+                            del centre, la zona nord-oest i sud-est de la ciutat.
+                        </p>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="flexRadioPreu" type="radio" checked id="radioM2">
+                                <label class="form-check-label" for="radioM2">Preu €/m²</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="flexRadioPreu" type="radio" id="radioAbsolut">
+                                <label class="form-check-label" for="radioAbsolut">Preu absolut</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="conainterMapaPreu" class='w-100' width="800" height="600"></div>
+                </div>
             </div>
         </div>
-
-
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" href="#pills-home" role="tab"
-                   aria-controls="pills-home" aria-selected="true">Preu</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="pills-descompte-tab" data-bs-toggle="pill" href="#pills-descompte" role="tab"
-                   aria-controls="pills-descompte" aria-selected="false">Descomptes</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" href="#pills-profile" role="tab"
-                   aria-controls="pills-profile" aria-selected="false">Diferència respecte a la mitjana</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="pills-inmobiliaries-tab" data-bs-toggle="pill" href="#pills-inmobiliaries"
-                   role="tab" aria-controls="pills-inmobiliaries" aria-selected="false">Immobiliàries</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="pills-dades-tab" data-bs-toggle="pill" href="#pills-dades" role="tab"
-                   aria-controls="pills-dades" aria-selected="false">Dades</a>
-            </li>
-        </ul>
-        <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                <div class="card w-100">
-                    <div class="card-header">
-                        Preu dels habitatges
+        <div class="tab-pane fade" id="pills-descompte" role="tabpanel" aria-labelledby="pills-descompte-tab">
+            <div class="card w-100">
+                <div class="card-header">
+                    Descomptes en els habitatges
+                </div>
+                <div class="card-body">
+                    <div>
+                        <p class="pb-3">
+                            Aquest és el mapa de calor dels descomptes dels habitatges de la ciutat. La majoría
+                            d'habitatges es troben rebaixats al web de Fotocasa, per tant, s'ha promitjat aquest valor
+                            pel conjunt del Barri. En el preu per metre quadrat, destaca La Barceloneta, La Dreta de
+                            l'Eixample, el Raval, Sant Genís dels Agudells i El Congrés i els Indians. Tots ells amb una
+                            rebaixa 1€/m² o més. En valor absolut, hi tenim La Vila Olímpica del Poblenou, la Dreta de
+                            l'Eixample, Pedralbes, Sant Gervasi-La Bonanova, la Teixonera, el Congrés i Sant Genís dels
+                            Agudells amb 80€ o més de descompte. </p>
                     </div>
-                    <div class="card-body">
-                        <p>
-                            Contràriament a la creença popular, Lorem Ipsum no és només text aleatori. Té les seves arrels
-                            en una peça clàssica de la literatura llatina del 45 aC, és a dir, de fa 2000 anys. Richard
-                            McClintock, un professor de llatí al Hampden-Sydney College a Virgínia, va buscar una de les
-                            paraules més estranyes del llatí, "consectetur", procedent d'un dels paràgrafs de Lorem Ipsum, i
-                            anant de citació en citació d'aquesta paraula a la literatura clàssica, en va descobrir l'orígen
-                            veritable. Lorem ipsum procedeix de les seccions 1.10.32 i 1.10.33 de "De Finibus Bonorum et
-                            Malorum" (Sobre el Bé i el Mal) de Ciceró, escrit l'any 45 aC. Aquest llibre és un tractat sobre
-                            la teoria de l'ètica, molt popular durant el Renaixement. La primera línia de Lorem Ipsum,
-                            "Lorem ipsum dolor sit amet..", prové d'una línia a la secció 1.10.32.
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="flexRadioDescomptes" type="radio" checked
+                                       id="radioM2Descompte">
+                                <label class="form-check-label" for="radioM2Descompte">Preu €/m²</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="flexRadioDescomptes" type="radio"
+                                       id="radioAbsolutDescompte">
+                                <label class="form-check-label" for="radioAbsolutDescompte">Preu absolut</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="conainterMapaDescompte" class='w-100' width="800" height="600"></div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <div class="card w-100">
+                <div class="card-header">
+                    Diferència respecte a la mitjana del barri
+                </div>
+                <div class="card-body">
+                    <p class="pb-3">
+                        En aquest mapa comparem el preu de cada habitatge amb la mitjana del 2019 del barri al que
+                        pertany. La informació sobre la mitjana dels barris la trobem a aquí: <span
+                            id="linkLloguerMitja" style="color: #0d47a1;cursor: pointer;">Lloguer mitjà mensual
+                        (€/mes) i per superfície (€/m2 mes) de la ciutat de Barcelona</span>. Aquesta informació prové
+                        de l'INCASÒL. La diferència la trobem expressada en tant per cent respecte a la mitjana del
+                        barri dels lloguers registrats a l'INCASÒL. Tenim les dades dels habitatges un a un i també la
+                        mitjana del barri. Donat que l'INCASÒL recull els lloguers vigents, aquest mapa ens ha de donar
+                        una idea d'on pugen o baixen els preus. Veiem que pel tram negatiu tenim La Trinitat Nova, les
+                        Roquetes, Canyelles, la Teixonera i la Vila Olímpica amb un 5% o més de diferència. Per contra,
+                        veiem que a la zona centre i litoral tenim preus amb una diferència per sobre del 30%, i al
+                        voltant del 40% al Coll i a Sant Genís dels Agudells.
+                    </p>
+                    <div class="row">
+                        <div id="conainterMapaMitjana" class='w-100' width="800" height="600"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="pills-inmobiliaries" role="tabpanel" aria-labelledby="pills-inmobiliaries-tab">
+            <div class="card w-100">
+                <div class="card-header">
+                    Immobiliàries
+                </div>
+                <div class="card-body">
 
-                            El fragment estàndard de Lorem Ipsum fet servir des del 1500 es reprodueix a continuació per
-                            tots aquells interessats. Les seccions 1.10.32 i 1.10.33 de "De Finibus Bonorum et Malorum" de
-                            Ciceró es reprodueixen en la seva forma original, acompanyades de les versions angleses de la
-                            traducció de 1914 feta per H. Rackham
-                        </p>
+                    <p class="pb-3">
+                        Tenim 1045 propietaris de lloguer, dels quals només 25 tenen més de 50 habitatges i gairebé el
+                        50% del total entre tots ells. És per això hem escollit visualitzar la informació en forma de
+                        gràfic de bombolles, ja que podem veure de manera àmplia el conjunt de propietaris i alhora
+                        focalitzar l'atenció en aquells que gestionen la majoría d'habitatges. Veiem la mida de cada
+                        bombolla segons el volum d'habitatges que gestionin. Dins de la bombolla hi ha el nom de la
+                        immobiliària i el nombre de pisos. Passant el ratolí per sobre, podem veure quin valor de la
+                        variable a estudiar té associat, que és el que li proporciona el color. Podem fer zoom per
+                        explorar zones amb bombolles més petites.
+                    </p>
+                    <p class="pb-3">
+                        Pel que fa a la diferència respecte a la mitjana, veiem que els grans tenidors sembla que venen
+                        força per sobre del preu mig del barri. Pel que fa a la superfície, tenim un comportament força
+                        homogeni. Pel que fa al preu, veiem que el patró de color es força semblant al de la diferència
+                        sobre la mitjana. També podem veure algunes immobiliàries amb un preu mig molt elevat,
+                        probablement es tracti d'habitatges de luxe. Per últim, observant la variable descompte, veiem
+                        que els grans tenidors són més propensos a rebaixar els habitatges. 
+                    </p>
+                    <div class="row">
                         <div class="d-flex justify-content-center align-items-center container ">
                             <div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" name="flexRadioPreu" type="radio" checked id="radioM2">
-                                    <label class="form-check-label" for="radioM2">Preu €/m²</label>
+                                    <input class="form-check-input" name="radioImmobiliaries" type="radio" checked
+                                           id="mitjanaImmobiliaria">
+                                    <label class="form-check-label" for="mitjanaImmobiliaria">Diferència respecte a la
+                                        mitjana (%)</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" name="flexRadioPreu" type="radio" id="radioAbsolut">
-                                    <label class="form-check-label" for="radioAbsolut">Preu absolut</label>
+                                    <input class="form-check-input" name="radioImmobiliaries" type="radio"
+                                           id="superficieImmobiliaria">
+                                    <label class="form-check-label" for="superficieImmobiliaria">Superfície (m²)</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" name="radioImmobiliaries" type="radio"
+                                           id="preuImmobiliaria">
+                                    <label class="form-check-label" for="preuImmobiliaria">Preu (€)</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" name="radioImmobiliaries" type="radio"
+                                           id="descompteImmobiliaria">
+                                    <label class="form-check-label" for="descompteImmobiliaria">Descompte (€)</label>
                                 </div>
                             </div>
                         </div>
-                        <div id="conainterMapaPreu" class='w-100' width="800" height="600"></div>
+                        <div id="containerBubble" class='w-100' width="900" height="1000"></div>
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="pills-descompte" role="tabpanel" aria-labelledby="pills-descompte-tab">
-                <div class="card w-100">
-                    <div class="card-header">
-                        Descomptes en els habitatges
+        </div>
+        <div class="tab-pane fade" id="pills-dades" role="tabpanel" aria-labelledby="pills-dades-tab">
+            <div class="card w-100">
+                <div class="card-header">
+                    Tractament de les dades
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <a href="https://doi.org/10.5281/zenodo.4430615"><img
+                                src="https://zenodo.org/badge/DOI/10.5281/zenodo.4430615.svg" alt="DOI"></a>
                     </div>
-                    <div class="card-body">
-                        <p>
-                            Contràriament a la creença popular, Lorem Ipsum no és només text aleatori. Té les seves arrels
-                            en una peça clàssica de la literatura llatina del 45 aC, és a dir, de fa 2000 anys. Richard
-                            McClintock, un professor de llatí al Hampden-Sydney College a Virgínia, va buscar una de les
-                            paraules més estranyes del llatí, "consectetur", procedent d'un dels paràgrafs de Lorem Ipsum, i
-                            anant de citació en citació d'aquesta paraula a la literatura clàssica, en va descobrir l'orígen
-                            veritable. Lorem ipsum procedeix de les seccions 1.10.32 i 1.10.33 de "De Finibus Bonorum et
-                            Malorum" (Sobre el Bé i el Mal) de Ciceró, escrit l'any 45 aC. Aquest llibre és un tractat sobre
-                            la teoria de l'ètica, molt popular durant el Renaixement. La primera línia de Lorem Ipsum,
-                            "Lorem ipsum dolor sit amet..", prové d'una línia a la secció 1.10.32.
-
-                            El fragment estàndard de Lorem Ipsum fet servir des del 1500 es reprodueix a continuació per
-                            tots aquells interessats. Les seccions 1.10.32 i 1.10.33 de "De Finibus Bonorum et Malorum" de
-                            Ciceró es reprodueixen en la seva forma original, acompanyades de les versions angleses de la
-                            traducció de 1914 feta per H. Rackham
-                        </p>
-                        <div class="d-flex justify-content-center align-items-center container ">
-                            <div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" name="flexRadioDescomptes" type="radio" checked
-                                           id="radioM2Descompte">
-                                    <label class="form-check-label" for="radioM2Descompte">Preu €/m²</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" name="flexRadioDescomptes" type="radio"
-                                           id="radioAbsolutDescompte">
-                                    <label class="form-check-label" for="radioAbsolutDescompte">Preu absolut</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="conainterMapaDescompte" class='w-100' width="800" height="600"></div>
+                    <div class="row">
+                        <div id="container-jupyter"></div>
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                <div class="card w-100">
-                    <div class="card-header">
-                        Diferència respecte a la mitjana del barri
-                    </div>
-                    <div class="card-body">
-                        <p>
-                            Contràriament a la creença popular, Lorem Ipsum no és només text aleatori. Té les seves arrels
-                            en una peça clàssica de la literatura llatina del 45 aC, és a dir, de fa 2000 anys. Richard
-                            McClintock, un professor de llatí al Hampden-Sydney College a Virgínia, va buscar una de les
-                            paraules més estranyes del llatí, "consectetur", procedent d'un dels paràgrafs de Lorem Ipsum, i
-                            anant de citació en citació d'aquesta paraula a la literatura clàssica, en va descobrir l'orígen
-                            veritable. Lorem ipsum procedeix de les seccions 1.10.32 i 1.10.33 de "De Finibus Bonorum et
-                            Malorum" (Sobre el Bé i el Mal) de Ciceró, escrit l'any 45 aC. Aquest llibre és un tractat sobre
-                            la teoria de l'ètica, molt popular durant el Renaixement. La primera línia de Lorem Ipsum,
-                            "Lorem ipsum dolor sit amet..", prové d'una línia a la secció 1.10.32.
-
-                            El fragment estàndard de Lorem Ipsum fet servir des del 1500 es reprodueix a continuació per
-                            tots aquells interessats. Les seccions 1.10.32 i 1.10.33 de "De Finibus Bonorum et Malorum" de
-                            Ciceró es reprodueixen en la seva forma original, acompanyades de les versions angleses de la
-                            traducció de 1914 feta per H. Rackham
-                        </p>
-                        <div class="row">
-                            <div id="conainterMapaMitjana" class='w-100' width="800" height="600"></div>
-                        </div>
-                    </div>
+        </div>
+        <div class="tab-pane fade" id="pills-mes" role="tabpanel" aria-labelledby="pills-dades-tab">
+            <div class="card w-100">
+                <div class="card-header">
+                    Més visualitzacions sobre les dades
                 </div>
-            </div>
-            <div class="tab-pane fade" id="pills-inmobiliaries" role="tabpanel" aria-labelledby="pills-inmobiliaries-tab">
-                <div class="card w-100">
-                    <div class="card-header">
-                        Immobiliàries
-                    </div>
-                    <div class="card-body">
-                        <p>
-                            Contràriament a la creença popular, Lorem Ipsum no és només text aleatori. Té les seves arrels
-                            en una peça clàssica de la literatura llatina del 45 aC, és a dir, de fa 2000 anys. Richard
-                            McClintock, un professor de llatí al Hampden-Sydney College a Virgínia, va buscar una de les
-                            paraules més estranyes del llatí, "consectetur", procedent d'un dels paràgrafs de Lorem Ipsum, i
-                            anant de citació en citació d'aquesta paraula a la literatura clàssica, en va descobrir l'orígen
-                            veritable. Lorem ipsum procedeix de les seccions 1.10.32 i 1.10.33 de "De Finibus Bonorum et
-                            Malorum" (Sobre el Bé i el Mal) de Ciceró, escrit l'any 45 aC. Aquest llibre és un tractat sobre
-                            la teoria de l'ètica, molt popular durant el Renaixement. La primera línia de Lorem Ipsum,
-                            "Lorem ipsum dolor sit amet..", prové d'una línia a la secció 1.10.32.
-
-                            El fragment estàndard de Lorem Ipsum fet servir des del 1500 es reprodueix a continuació per
-                            tots aquells interessats. Les seccions 1.10.32 i 1.10.33 de "De Finibus Bonorum et Malorum" de
-                            Ciceró es reprodueixen en la seva forma original, acompanyades de les versions angleses de la
-                            traducció de 1914 feta per H. Rackham
-                        </p>
-                        <div class="row">
-                            <div class="d-flex justify-content-center align-items-center container ">
-                                <div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="radioImmobiliaries" type="radio" checked
-                                               id="mitjanaImmobiliaria">
-                                        <label class="form-check-label" for="mitjanaImmobiliaria">Diferència respecte a la
-                                            mitjana (%)</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="radioImmobiliaries" type="radio"
-                                               id="superficieImmobiliaria">
-                                        <label class="form-check-label" for="superficieImmobiliaria">Superfície (m²)</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="radioImmobiliaries" type="radio"
-                                               id="preuImmobiliaria">
-                                        <label class="form-check-label" for="preuImmobiliaria">Preu (€)</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="radioImmobiliaries" type="radio"
-                                               id="descompteImmobiliaria">
-                                        <label class="form-check-label" for="descompteImmobiliaria">Descompte (€)</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="containerBubble" class='w-100' width="900" height="1000"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="pills-dades" role="tabpanel" aria-labelledby="pills-dades-tab">
-                <div class="card w-100">
-                    <div class="card-header">
-                        Tractament de les dades
-                    </div>
-                    <div class="card-body">
-                        <div class="row mb-3">
-                            <a href="https://doi.org/10.5281/zenodo.4430615"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.4430615.svg" alt="DOI"></a>
-                        </div>
-                        <div class="row">
-                            <div id="container-jupyter"></div>
-                        </div>
+                <div class="card-body">
+                    <div>
+                        <div class='tableauPlaceholder' id='viz1610308728750' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Li&#47;Libro1_16053054017730&#47;Historia1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Libro1_16053054017730&#47;Historia1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Li&#47;Libro1_16053054017730&#47;Historia1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='es' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1610308728750');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </body>
 
 <script>
@@ -642,7 +658,7 @@
             var colorScale = d3.scaleLinear()
                 .domain([-20, 0, 100])
                 .range(["green", "white", "red"]);
-            fesMapaCalor('#conainterMapaMitjana', 'diff_mitjana', "€", topo, data, colorScale);
+            fesMapaCalor('#conainterMapaMitjana', 'diff_mitjana', "%", topo, data, colorScale);
         })
 
 
@@ -668,6 +684,9 @@
 
         $("#container-jupyter").load("tractamentdades.html");
 
+        $("#linkLloguerMitja").click(function () {
+            window.open("https://opendata-ajuntament.barcelona.cat/data/ca/dataset/est-mercat-immobiliari-lloguer-mitja-mensual");
+        });
         bubbleChar("#containerBubble", immobiliaries, 'diff_mitjana', colorDiffMitjana);
     }
 
