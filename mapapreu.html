@@ -501,9 +501,9 @@
 
     // The svg
     d3.queue()
-        .defer(d3.json, "http://0.0.0.0:8000/barris_marcator.geojson")
-        .defer(d3.csv, "http://0.0.0.0:8000/data_final_id_clean.csv")
-        .defer(d3.csv, "http://0.0.0.0:8000/counts_realstate.csv")
+        .defer(d3.json, "barris_marcator.geojson")
+        .defer(d3.csv, "data_final_id_clean.csv")
+        .defer(d3.csv, "counts_realstate.csv")
         .await(readyData);
 
 
