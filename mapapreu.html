@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.13.0/d3-legend.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<style>
+    svg rect {
+        fill: white; /* map background colour */
+    }
+
+    .d3-tip {
+        line-height: 1;
+        padding: 12px;
+        background: rgba(43, 43, 43, 0.8);
+        color: #fff;
+        border-radius: 2px;
+    }
+</style>
+
+
+<!-- Create an element where the map will take place -->
+<div class="container-fluid">
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Preu</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="pills-descompte-tab" data-bs-toggle="pill" href="#pills-descompte" role="tab" aria-controls="pills-descompte" aria-selected="false">Descomptes</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Diferència respecte a la mitjana</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="pills-inmobiliaries-tab" data-bs-toggle="pill" href="#pills-inmobiliaries" role="tab" aria-controls="pills-inmobiliaries" aria-selected="false">Immobiliàries</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div class="card w-50">
+                <div class="card-header">
+                    Preu dels habitatges
+                </div>
+                <div class="card-body">
+                    <p>
+                        Contràriament a la creença popular, Lorem Ipsum no és només text aleatori. Té les seves arrels en una peça clàssica de la literatura llatina del 45 aC, és a dir, de fa 2000 anys. Richard McClintock, un professor de llatí al Hampden-Sydney College a Virgínia, va buscar una de les paraules més estranyes del llatí, "consectetur", procedent d'un dels paràgrafs de Lorem Ipsum, i anant de citació en citació d'aquesta paraula a la literatura clàssica, en va descobrir l'orígen veritable. Lorem ipsum procedeix de les seccions 1.10.32 i 1.10.33 de "De Finibus Bonorum et Malorum" (Sobre el Bé i el Mal) de Ciceró, escrit l'any 45 aC. Aquest llibre és un tractat sobre la teoria de l'ètica, molt popular durant el Renaixement. La primera línia de Lorem Ipsum, "Lorem ipsum dolor sit amet..", prové d'una línia a la secció 1.10.32.
+
+                        El fragment estàndard de Lorem Ipsum fet servir des del 1500 es reprodueix a continuació per tots aquells interessats. Les seccions 1.10.32 i 1.10.33 de "De Finibus Bonorum et Malorum" de Ciceró es reprodueixen en la seva forma original, acompanyades de les versions angleses de la traducció de 1914 feta per H. Rackham
+                    </p>
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="flexRadioPreu" type="radio" checked id="radioM2">
+                                <label class="form-check-label" for="radioM2">Preu €/m²</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="flexRadioPreu" type="radio" id="radioAbsolut">
+                                <label class="form-check-label" for="radioAbsolut">Preu absolut</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="conainterMapaPreu" class='w-100' width="800" height="600"></div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="pills-descompte" role="tabpanel" aria-labelledby="pills-descompte-tab">
+            <div class="card w-50">
+                <div class="card-header">
+                    Descomptes en els habitatges
+                </div>
+                <div class="card-body">
+                    <p>
+                        Contràriament a la creença popular, Lorem Ipsum no és només text aleatori. Té les seves arrels en una peça clàssica de la literatura llatina del 45 aC, és a dir, de fa 2000 anys. Richard McClintock, un professor de llatí al Hampden-Sydney College a Virgínia, va buscar una de les paraules més estranyes del llatí, "consectetur", procedent d'un dels paràgrafs de Lorem Ipsum, i anant de citació en citació d'aquesta paraula a la literatura clàssica, en va descobrir l'orígen veritable. Lorem ipsum procedeix de les seccions 1.10.32 i 1.10.33 de "De Finibus Bonorum et Malorum" (Sobre el Bé i el Mal) de Ciceró, escrit l'any 45 aC. Aquest llibre és un tractat sobre la teoria de l'ètica, molt popular durant el Renaixement. La primera línia de Lorem Ipsum, "Lorem ipsum dolor sit amet..", prové d'una línia a la secció 1.10.32.
+
+                        El fragment estàndard de Lorem Ipsum fet servir des del 1500 es reprodueix a continuació per tots aquells interessats. Les seccions 1.10.32 i 1.10.33 de "De Finibus Bonorum et Malorum" de Ciceró es reprodueixen en la seva forma original, acompanyades de les versions angleses de la traducció de 1914 feta per H. Rackham
+                    </p>
+                    <div class="d-flex justify-content-center align-items-center container ">
+                        <div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="flexRadioDescomptes" type="radio" checked id="radioM2Descompte">
+                                <label class="form-check-label" for="radioM2Descompte">Preu €/m²</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input"  name="flexRadioDescomptes"  type="radio" id="radioAbsolutDescompte">
+                                <label class="form-check-label" for="radioAbsolutDescompte">Preu absolut</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="conainterMapaDescompte" class='w-100' width="800" height="600"></div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <div class="card w-50">
+                <div class="card-header">
+                    Diferència respecte a la mitjana del barri
+                </div>
+                <div class="card-body" >
+                    <p>
+                        Contràriament a la creença popular, Lorem Ipsum no és només text aleatori. Té les seves arrels en una peça clàssica de la literatura llatina del 45 aC, és a dir, de fa 2000 anys. Richard McClintock, un professor de llatí al Hampden-Sydney College a Virgínia, va buscar una de les paraules més estranyes del llatí, "consectetur", procedent d'un dels paràgrafs de Lorem Ipsum, i anant de citació en citació d'aquesta paraula a la literatura clàssica, en va descobrir l'orígen veritable. Lorem ipsum procedeix de les seccions 1.10.32 i 1.10.33 de "De Finibus Bonorum et Malorum" (Sobre el Bé i el Mal) de Ciceró, escrit l'any 45 aC. Aquest llibre és un tractat sobre la teoria de l'ètica, molt popular durant el Renaixement. La primera línia de Lorem Ipsum, "Lorem ipsum dolor sit amet..", prové d'una línia a la secció 1.10.32.
+
+                        El fragment estàndard de Lorem Ipsum fet servir des del 1500 es reprodueix a continuació per tots aquells interessats. Les seccions 1.10.32 i 1.10.33 de "De Finibus Bonorum et Malorum" de Ciceró es reprodueixen en la seva forma original, acompanyades de les versions angleses de la traducció de 1914 feta per H. Rackham
+                    </p>
+                    <div class="row">
+                        <div id="conainterMapaMitjana" class='w-100' width="800" height="600"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="pills-inmobiliaries" role="tabpanel" aria-labelledby="pills-inmobiliaries-tab">
+            <div class="card w-50">
+                <div class="card-header">
+                    Immobiliàries
+                </div>
+                <div class="card-body" >
+                    <p>
+                        Contràriament a la creença popular, Lorem Ipsum no és només text aleatori. Té les seves arrels en una peça clàssica de la literatura llatina del 45 aC, és a dir, de fa 2000 anys. Richard McClintock, un professor de llatí al Hampden-Sydney College a Virgínia, va buscar una de les paraules més estranyes del llatí, "consectetur", procedent d'un dels paràgrafs de Lorem Ipsum, i anant de citació en citació d'aquesta paraula a la literatura clàssica, en va descobrir l'orígen veritable. Lorem ipsum procedeix de les seccions 1.10.32 i 1.10.33 de "De Finibus Bonorum et Malorum" (Sobre el Bé i el Mal) de Ciceró, escrit l'any 45 aC. Aquest llibre és un tractat sobre la teoria de l'ètica, molt popular durant el Renaixement. La primera línia de Lorem Ipsum, "Lorem ipsum dolor sit amet..", prové d'una línia a la secció 1.10.32.
+
+                        El fragment estàndard de Lorem Ipsum fet servir des del 1500 es reprodueix a continuació per tots aquells interessats. Les seccions 1.10.32 i 1.10.33 de "De Finibus Bonorum et Malorum" de Ciceró es reprodueixen en la seva forma original, acompanyades de les versions angleses de la traducció de 1914 feta per H. Rackham
+                    </p>
+                    <div class="row">
+                        <div class="d-flex justify-content-center align-items-center container ">
+                            <div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" name="radioImmobiliaries" type="radio" checked id="mitjanaImmobiliaria">
+                                    <label class="form-check-label" for="mitjanaImmobiliaria">Diferència respecte a la mitjana (%)</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input"  name="radioImmobiliaries"  type="radio" id="superficieImmobiliaria">
+                                    <label class="form-check-label" for="superficieImmobiliaria">Superfície (m²)</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input"  name="radioImmobiliaries"  type="radio" id="preuImmobiliaria">
+                                    <label class="form-check-label" for="preuImmobiliaria">Preu (€)</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input"  name="radioImmobiliaries"  type="radio" id="descompteImmobiliaria">
+                                    <label class="form-check-label" for="descompteImmobiliaria">Descompte (€)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="containerBubble" class='w-100' width="900" height="1000"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+<script>
+    function fesMapaCalor(selector, field, unitats, topo, csv, colorScale) {
+        d3.select(selector).select("svg").remove();
+        var containerMapa = d3.select(selector);
+        var width = containerMapa.attr("width");
+        var height = containerMapa.attr("height");
+        var svg =  containerMapa.append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        // Map and projection
+        var path = d3.geoPath();
+        var projection = d3.geoMercator()
+            .scale(150000)
+            .center([2.154007, 41.390205])
+            .translate([width / 2, height / 2])
+        ;
+
+        // Data and color scale
+        var data = d3.map();
+
+        if (!colorScale) {
+            var csvDomain = csv.map((pis) => Number(pis[field]))
+            colorScale = d3.scaleLinear()
+                .domain([d3.quantile(csvDomain, 0.25) * 0.75, d3.quantile(csvDomain, 0.75) * 1.2])
+                .range(["white", "orange", "red"]);
+        }
+        var tip = d3.tip()
+            .attr('class', 'd3-tip')
+            .offset([-5, 0])
+            .html(function (d) {
+                var price = d.properties[field]
+                if (price) {
+                    return d.properties.NOM + ': ' + price.toFixed(2) + unitats
+                } else {
+                    return d.properties.NOM + ': ' + 'sense dades'
+                }
+            })
+
+        function pisAString(d) {
+            let diff_mitjana = parseFloat(d.diff_mitjana).toFixed(2);
+            return `
+            <p>${d.building_subtype} ${d.sqft_m2} m²</p>
+            <p>${d.rooms} habitacions</p>
+            <p>${d.bathrooms} lavabos</p>
+            <p>Amb ascensor? ${d.floor_elevator}</p>
+            <p>Nova construcció? ${d.is_new_construction}</p>
+            <p></p>
+            <p>${d.realestate}</p>
+            <p>${d.neighbourhood}</p>
+            <strong>${d.price} €/mes</strong>
+            <p>Descompte: ${d.discount} €/mes</p>
+            <p>${diff_mitjana} sobre la mitjana</p>
+        `;
+
+
+        }
+
+        var tipCircle = d3.tip()
+            .attr('class', 'd3-tip')
+            .offset([-5, 0])
+            .html(function (d) {
+                return pisAString(d)
+            })
+
+
+        // Create function to apply zoom to countriesGroup
+        function zoomed() {
+            t = d3
+                .event
+                .transform
+            ;
+            barrisMap
+                .attr("transform", "translate(" + [t.x, t.y] + ")scale(" + t.k + ")")
+            ;
+        }
+
+        var path = d3
+            .geoPath()
+            .projection(projection)
+        ;
+
+        // zoom to show a bounding box, with optional additional padding as percentage of box size
+        function boxZoom(box, centroid, paddingPerc, codiBarri) {
+            minXY = box[0];
+            maxXY = box[1];
+            // find size of map area defined
+            zoomWidth = Math.abs(minXY[0] - maxXY[0]);
+            zoomHeight = Math.abs(minXY[1] - maxXY[1]);
+            // find midpoint of map area defined
+            zoomMidX = centroid[0];
+            zoomMidY = centroid[1];
+            // increase map area to include padding
+            zoomWidth = zoomWidth * (1 + paddingPerc / 100);
+            zoomHeight = zoomHeight * (1 + paddingPerc / 100);
+            // find scale required for area to fill svg
+            maxXscale = svg.attr('width') / zoomWidth;
+            maxYscale = svg.attr('height') / zoomHeight;
+            zoomScale = Math.min(maxXscale, maxYscale);
+            // Find screen pixel equivalent once scaled
+            offsetX = zoomScale * zoomMidX;
+            offsetY = zoomScale * zoomMidY;
+            // Find offset to centre, making sure no gap at left or top of holder
+            dleft = Math.min(0, svg.attr('width') / 2 - offsetX);
+            dtop = Math.min(0, svg.attr('height') / 2 - offsetY);
+            // Make sure no gap at bottom or right of holder
+            dleft = Math.max(svg.attr('width') - width * zoomScale, dleft);
+            dtop = Math.max(svg.attr('height') - height * zoomScale, dtop);
+            // set zoom
+            svg
+                .transition()
+                .duration(500)
+                .call(
+                    zoom.transform,
+                    d3.zoomIdentity.translate(dleft, dtop).scale(zoomScale)
+                );
+
+            d3.selectAll(".circle").attr("visibility", "hidden");
+            d3.selectAll(".circle-" + parseInt(codiBarri)).attr("visibility", "visible");
+
+        }
+
+
+        // Define map zoom behaviour
+        var zoom = d3
+            .zoom()
+            .on("zoom", zoomed)
+        ;
+
+
+        svg.call(tip);
+        svg.call(tipCircle);
+        svg.call(zoom);
+        // Load external data and boot
+
+        barrisMap = svg.append("g")
+            .attr("id", "map")
+            .attr("width", width)
+            .attr("height", height)
+        ;
+        // add a background rectangle
+        barrisMap
+            .append("rect")
+            .attr("x", 0)
+            .attr("y", 0)
+            .attr("width", width)
+            .attr("height", height);
+
+        // Draw the map
+        barrisMap
+            .selectAll("path")
+            .data(topo.features)
+            .enter()
+            .append("path")
+            // draw each country
+            .attr("d", path
+            )
+            // set the color of each country
+            .attr("fill", function (d) {
+                if (!d.properties.price) {
+                    return "black"
+                }
+                return colorScale(d.properties[field]);
+            })
+            .on('mouseover', tip.show)
+            .on('mouseout', tip.hide)
+            .on("click", function (d, i) {
+                boxZoom(path.bounds(d), path.centroid(d), 20, d.properties.CODI_UA);
+            });
+
+        barrisMap
+            .selectAll("circle")
+            .data(csv)
+            .enter()
+            .append("circle")
+            .attr('class', function (d) {
+                return 'circle circle-' + parseInt(d.id_neighbourhood)
+            })
+            .attr("visibility", "hidden")
+            .attr("cx", function (d) {
+                return projection([d.longitude, d.latitude])[0];
+            })
+            .attr("cy", function (d) {
+                return projection([d.longitude, d.latitude])[1];
+            })
+            .on('mouseover', tipCircle.show)
+            .on('mouseout', tipCircle.hide)
+            .attr("r", 1)
+            .style("fill", function (d) {
+                return colorScale(d[field])
+            })
+
+            .style("stroke", "gray")
+            .style("stroke-width", 0.1)
+            .style("opacity", 0.75);
+
+
+        var legend = d3.legendColor()
+            .shapePadding(10)
+            .orient("vertical")
+            .labelAlign("start")
+            .scale(colorScale);
+
+        svg.append("g")
+            .attr("width", width)
+            .attr("height", height)
+            .call(legend);
+
+    }
+
+
+
+    function bubbleChar(selector, dades, field, colorScale){
+        d3.select(selector).select("svg").remove();
+
+        var width =  d3.select(selector).attr("width");
+        var height =  d3.select(selector).attr("height");
+
+        var dataset = { 'children': dades}
+        var diameter = 600;
+
+        if (!colorScale) {
+            var csvDomain = dades.map((dada) => Number(dada[field]))
+            colorScale = d3.scaleLinear()
+                .domain([d3.quantile(csvDomain, 0.25) * 0.5, d3.quantile(csvDomain, 0.75) * 1.2])
+                .range(["white", "orange", "red"]);
+        }
+
+
+
+        var bubble = d3.pack(dataset)
+            .size([diameter, diameter])
+            .padding(1.5);
+
+        var svg = d3.select(selector)
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .attr("class", "bubble");
+
+
+
+        var nodes = d3.hierarchy(dataset)
+            .sum(function(d) { return d.count; });
+
+        bubbleaChart = svg.append("g").attr("id", "bubble");
+        // add a background rectangle
+        bubbleaChart
+            .append("rect")
+            .attr("x", 0)
+            .attr("y", 0)
+            .attr('class', 'legend')
+            .attr("width", width)
+            .attr("height", height);
+
+        var node = bubbleaChart.selectAll(".node")
+            .data(bubble(nodes).descendants())
+            .enter()
+            .filter(function(d){
+                return  !d.children
+            })
+            .append("g")
+            .attr("class", "node")
+            .attr("transform", function(d) {
+                return "translate(" + d.x + "," + d.y + ")";
+            });
+
+        node.append("title")
+            .text(function(d) {
+                return d.data.realestate + ": " + d.data[field];
+            });
+
+        node.append("circle")
+            .attr("r", function(d) {
+                return d.r;
+            })
+            .style("fill", function(d,i) {
+                return colorScale(d.data[field]);
+            });
+
+        node.append("text")
+            .attr("dy", ".2em")
+            .style("text-anchor", "middle")
+            .text(function(d) {
+                return d.data.realestate.substring(0, d.r / 3);
+            })
+            .attr("font-family", "sans-serif")
+            .attr("font-size", function(d){
+                return d.r/5;
+            })
+            .attr("fill", "white");
+
+        node.append("text")
+            .attr("dy", "1.3em")
+            .style("text-anchor", "middle")
+            .text(function(d) {
+                return d.data.count;
+            })
+            .attr("font-family",  "Gill Sans", "Gill Sans MT")
+            .attr("font-size", function(d){
+                return d.r/5;
+            })
+            .attr("fill", "white");
+
+        d3.select(self.frameElement)
+            .style("height", diameter + "px");
+
+        var legend = d3.legendColor()
+            .shapePadding(10)
+            .orient("vertical")
+            .labelAlign("start")
+            .scale(colorScale);
+
+        svg.append("g")
+            .attr("width", width)
+            .attr("height", height)
+            .call(legend);
+
+        function zoomed() {
+            t = d3
+                .event
+                .transform
+            ;
+            bubbleaChart
+                .attr("transform", "translate(" + [t.x, t.y] + ")scale(" + t.k + ")")
+            ;
+        }
+
+        var zoom = d3
+            .zoom()
+            .on("zoom", zoomed)
+        ;
+
+        svg.call(zoom);
+
+    }
+
+    // The svg
+    d3.queue()
+        .defer(d3.json, "http://0.0.0.0:8000/barris_marcator.geojson")
+        .defer(d3.csv, "http://0.0.0.0:8000/data_final_id_clean.csv")
+        .defer(d3.csv, "http://0.0.0.0:8000/counts_realstate.csv")
+        .await(readyData);
+
+
+    function readyData(error, topo, data, immobiliaries) {
+        var colorDiscount = d3.scaleLinear()
+            .domain([0, 100])
+            .range(["white","orange", "red"]);
+        var colorDiscountM2 = d3.scaleLinear()
+            .domain([0, 1])
+            .range(["white","orange", "red"]);
+
+        fesMapaCalor("#conainterMapaPreu",'price_m2', "€/m²", topo, data);
+
+        $('#radioM2').click(function () {
+            fesMapaCalor("#conainterMapaPreu",'price_m2', "€/m²", topo, data);
+        })
+
+        $('#radioAbsolut').click(function () {
+            fesMapaCalor("#conainterMapaPreu",'price', "€", topo, data);
+        })
+
+        $('#radioM2Descompte').click(function () {
+            fesMapaCalor("#conainterMapaDescompte",'discount_m2', "€/m²", topo, data,colorDiscountM2);
+        })
+
+        $('#radioAbsolutDescompte').click(function () {
+            fesMapaCalor("#conainterMapaDescompte",'discount', "€", topo, data,colorDiscount);
+        })
+
+
+        $('#pills-descompte-tab').click(function () {
+            $('#radioM2Descompte').click();
+        })
+
+        $('#pills-home-tab').click(function () {
+            $('#radioM2').click();
+        })
+
+        $('#pills-profile-tab').click(function () {
+            var colorScale = d3.scaleLinear()
+                .domain([-20, 0, 100])
+                .range(["green", "white", "red"]);
+            fesMapaCalor('#conainterMapaMitjana','diff_mitjana', "€", topo, data, colorScale);
+        })
+
+
+        var colorDiffMitjana = d3.scaleLinear()
+            .domain([-20, 0, 100])
+            .range(["green", "white", "red"]);
+
+
+        $('#superficieImmobiliaria').click(function () {
+            bubbleChar("#containerBubble", immobiliaries, 'sqft_m2');
+        })
+
+        $('#preuImmobiliaria').click(function () {
+            bubbleChar("#containerBubble", immobiliaries, 'price');
+        })
+        $('#descompteImmobiliaria').click(function () {
+            bubbleChar("#containerBubble", immobiliaries, 'discount',colorDiscount);
+        })
+
+        $('#mitjanaImmobiliaria').click(function () {
+            bubbleChar("#containerBubble", immobiliaries, 'diff_mitjana', colorDiffMitjana);
+        })
+
+
+        bubbleChar("#containerBubble", immobiliaries, 'diff_mitjana', colorDiffMitjana);
+    }
+
+
+</script>
+
