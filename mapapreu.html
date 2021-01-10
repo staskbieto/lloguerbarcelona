@@ -45,6 +45,9 @@
         <li class="nav-item" role="presentation">
             <a class="nav-link" id="pills-inmobiliaries-tab" data-bs-toggle="pill" href="#pills-inmobiliaries" role="tab" aria-controls="pills-inmobiliaries" aria-selected="false">Immobiliàries</a>
         </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="pills-dades-tab" data-bs-toggle="pill" href="#pills-dades" role="tab" aria-controls="pills-dades" aria-selected="false">Dades</a>
+        </li>
     </ul>
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
@@ -155,7 +158,16 @@
                 </div>
             </div>
         </div>
-    </div>
+        <div class="tab-pane fade" id="pills-dades" role="tabpanel" aria-labelledby="pills-dades-tab">
+            <div class="card w-50">
+                <div class="card-header">
+                    Tractament de les dades
+                </div>
+                <div class="card-body" >
+                    <div id="container-jupyter"></div>
+                </div>
+            </div>
+        </div>
 
 
 
@@ -570,6 +582,7 @@
             bubbleChar("#containerBubble", immobiliaries, 'diff_mitjana', colorDiffMitjana);
         })
 
+        $("#container-jupyter").load("tractamentdades.html");
 
         bubbleChar("#containerBubble", immobiliaries, 'diff_mitjana', colorDiffMitjana);
     }
